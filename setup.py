@@ -9,7 +9,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 # Setting up
 setup(
     name="dicewarepy",
-    version="1.0.1",
+    version="1.0.2",
     description="Minimalist Python library designed for the random selection of words from cryptographic wordlists, utilizing the Diceware method.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -30,6 +30,8 @@ setup(
         "dicewarepy", "diceware", "dice", "die", "passphrase", "passphrases", "password", "passwords"
     ],
     packages=find_packages(),
-    include_package_data=True,
+    package_data={
+        "dicewarepy.wordlists": ["*.txt"],
+    },
     install_requires=[]
 )
