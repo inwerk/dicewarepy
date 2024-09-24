@@ -30,5 +30,6 @@ setup(
         "dicewarepy", "diceware", "dice", "die", "passphrase", "passphrases", "password", "passwords"
     ],
     packages=find_packages(),
+    include_package_data=True,
     install_requires=[]
 )
