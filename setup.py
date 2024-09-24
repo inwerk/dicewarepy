@@ -9,7 +9,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 # Setting up
 setup(
     name="dicewarepy",
-    version="1.0.0",
+    version="1.0.1",
     description="Minimalist Python library designed for the random selection of words from cryptographic wordlists, utilizing the Diceware method.",
     long_description=long_description,
     long_description_content_type="text/markdown",
