@@ -1,0 +1,1 @@
+from .diceware import diceware
