@@ -116,14 +116,14 @@ The entropy is determined by taking the base-2 logarithm of the number of possib
 
 As shown in the following table, each word in the passphrase contributes an additional $12.925$ bits of entropy. Given the time required to guess the correct combination, it is recommended to use Diceware passphrases that consist of at least 6 words.
 
-| Words | Possible Passphrases | Entropy  | TIme to guess*                    |
+| Words | Possible Passphrases | Entropy  | Time to guess*                    |
 |-------|----------------------|----------|-----------------------------------|
 | $1$   | $7,776$              | $12.925$ | $\lt 1 \textrm{ second}$          |
 | $2$   | $\approx 6.04e^7$    | $25.85$  | $\lt 1 \textrm{ second}$          |
 | $3$   | $\approx 4.7e^{11}$  | $38.774$ | $\lt 1 \textrm{ second}$          |
 | $4$   | $\approx 3.65e^{15}$ | $51.7$   | $\approx 30 \text{ minutes}$      |
 | $5$   | $\approx 2.84e^{19}$ | $64.62$  | $\approx 165 \text{ days}$        |
-| $6$   | $\approx 2.21e^{23}$ | $77.55$  | $\approx 3505 \text{ years}$      |
+| $6$   | $\approx 2.21e^{23}$ | $77.55$  | $\approx 3,505 \text{ years}$     |
 | $7$   | $\approx 1.71e^{27}$ | $90.47$  | $\approx 27,256 \text{ millenia}$ |
 | $8$   | $\approx 1.33e^{31}$ | $103.4$  | ...                               |
 
