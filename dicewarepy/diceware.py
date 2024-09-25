@@ -21,7 +21,6 @@ __credits__ = ["inwerk"]
 __license__ = "MIT"
 __version__ = "1.0.0"
 __maintainer__ = "inwerk"
-__email__ = "inwerk@posteo.de"
 __status__ = "Production"
 
 
