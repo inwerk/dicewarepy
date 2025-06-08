@@ -33,6 +33,9 @@ jobs:
       - name: Install development dependencies
         run: |
           uv sync --extra dev
+      - name: Install package in editable mode
+        run: |
+          uv pip install -e .
       - name: Lint with ruff
         run: |
           uv run -- ruff check --line-length=127 --output-format=github
