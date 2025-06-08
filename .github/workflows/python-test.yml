@@ -1,0 +1,44 @@
+# This workflow will run tests, type checks and lint with a variety of Python versions
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Test and Lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+      - name: Install development dependencies
+        run: |
+          uv sync --extra dev
+      - name: Lint with ruff
+        run: |
+          uv run -- ruff check --line-length=127 --output-format=github
+      - name: Type check with ty
+        run: |
+          uv run -- ty check
+      - name: Test with pytest
+        run: |
+          uv run -- pytest
