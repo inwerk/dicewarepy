@@ -150,8 +150,8 @@ Ensure that uv is installed on your system. If not, follow the instructions [her
 1. Clone the repository and navigate to the project directory:
 
 ```shell
-git clone https://github.com/zersec/cloud-api.git
-cd cloud-api
+git clone https://github.com/inwerk/dicewarepy.git
+cd dicewarepy
 ```
 
 2. Install the required development dependencies:
