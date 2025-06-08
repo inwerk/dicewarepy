@@ -1,0 +1,39 @@
+[project]
+name = "dicewarepy"
+version = "1.0.4"
+description = " Minimalist Python library for Diceware-based word selection from cryptographic wordlists."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    {name = "inwerk"}
+]
+keywords = ["dicewarepy", "diceware", "dice", "die", "wordlist", "wordlists", "passphrase", "passphrases", "password", "passwords", "security"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Utilities",
+    "Topic :: Security",
+    "Topic :: Security :: Cryptography"
+]
+
+[project.urls]
+"Documentation" = "https://github.com/inwerk/dicewarepy/blob/main/README.md"
+"Repository" = "https://github.com/inwerk/dicewarepy"
+"Bug Tracker" = "https://github.com/inwerk/dicewarepy/issues"
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "ruff", "ty"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["dicewarepy", "dicewarepy.wordlists"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=dicewarepy  --no-cov-on-fail --cov-report term-missing"
+testpaths = ["tests"]
