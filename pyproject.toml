@@ -1,6 +1,6 @@
 [project]
 name = "dicewarepy"
-version = "1.0.4"
+version = "1.1.0"
 description = " Minimalist Python library for Diceware-based word selection from cryptographic wordlists."
 readme = "README.md"
 requires-python = ">=3.11"
