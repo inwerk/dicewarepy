@@ -100,11 +100,13 @@ Output: `dainty swimmable thimble stuffing armrest little`
 
 ### Wordlists
 
-| Language | Tag  | Wordlist                                                                 | File                                                                                                         |
-|----------|------|--------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| English  | `en` | [EFF Large Word List](https://www.eff.org/document/passphrase-wordlists) | [eff_large_wordlist.txt](https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt)                        |
-| German   | `de` | [Mnemonische deutsche Wortliste](https://github.com/dys2p/wordlists-de)  | [de-7776-v1-diceware.txt](https://raw.githubusercontent.com/dys2p/wordlists-de/main/de-7776-v1-diceware.txt) |
-| ...      | ...  | ...                                                                      | ...                                                                                                          |
+| Language | Tag  | Wordlist                                                                       | File                                                                                                                                          |
+|----------|------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| English  | `en` | [EFF Large Word List](https://www.eff.org/document/passphrase-wordlists)       | [eff_large_wordlist.txt](https://github.com/inwerk/dicewarepy/blob/main/src/dicewarepy/wordlists/eff_large_wordlist.txt?raw=true)             |
+| French   | `fr` | [French Word List](https://github.com/ArthurPons/diceware-fr-alt)              | [diceware-fr-alt.txt](https://github.com/inwerk/dicewarepy/blob/main/src/dicewarepy/wordlists/diceware-fr-alt.txt?raw=true)                   |
+| German   | `de` | [Mnemonische deutsche Wortliste](https://github.com/dys2p/wordlists-de)        | [de-7776-v1-diceware.txt](https://github.com/inwerk/dicewarepy/blob/main/src/dicewarepy/wordlists/de-7776-v1-diceware.txt?raw=true)           |
+| Spanish  | `es` | [dadoware-bonito-es](https://github.com/mir123/dadoware-bonito-es)             | [DW-es-bonito.txt](https://github.com/inwerk/dicewarepy/blob/main/src/dicewarepy/wordlists/DW-es-bonito.txt?raw=true)                         |
+| ...      | ...  | ...                                                                            | ...                                                                                                                                           |
 
 ## Security
 
@@ -184,4 +186,6 @@ uv run -- pytest
 ## Credits
 - [Diceware](https://theworld.com/~reinhold/diceware.html) [(archived)](https://web.archive.org/web/20240913072907/https://theworld.com/~reinhold/diceware.html) by Arnold G. Reinhold
 - [EFF Large Word List](https://www.eff.org/document/passphrase-wordlists) by Electronic Frontier Foundation
+- [French Word List](https://github.com/ArthurPons/diceware-fr-alt) by Arthur Pons
 - [Mnemonische deutsche Wortliste](https://github.com/dys2p/wordlists-de) by dys2p
+- [dadoware-bonito-es](https://github.com/mir123/dadoware-bonito-es) by mir123
