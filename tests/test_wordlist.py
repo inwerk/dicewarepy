@@ -31,6 +31,14 @@ def test_wordlist_language_english_length():
     """The length of the English wordlist must be 7776 entries."""
     assert len(wordlist(language="en")) == 7776
 
+def test_wordlist_language_french():
+    """The French wordlist must return the correct word for a given key."""
+    assert wordlist(language="fr")["24363"] == "cube"
+
+def test_wordlist_language_french_length():
+    """The length of the French wordlist must be 7776 entries."""
+    assert len(wordlist(language="fr")) == 7776
+
 
 def test_wordlist_language_german():
     """The German wordlist must return the correct word for a given key."""
@@ -40,6 +48,15 @@ def test_wordlist_language_german():
 def test_wordlist_language_german_length():
     """The length of the German wordlist must be 7776 entries."""
     assert len(wordlist(language="de")) == 7776
+
+
+def test_wordlist_language_spanish():
+    """The Spanish wordlist must return the correct word for a given key."""
+    assert wordlist(language="es")["62354"] == "seguridad"
+
+def test_wordlist_language_spanish_length():
+    """The length of the Spanish wordlist must be 7776 entries."""
+    assert len(wordlist(language="es")) == 7776
 
 
 def test_wordlist_language_default():

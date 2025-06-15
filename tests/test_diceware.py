@@ -31,6 +31,15 @@ def test_diceware_language_english():
         assert word in english_wordlist.values()
 
 
+def test_diceware_language_french():
+    """The ``diceware`` function must use the French wordlist when the language parameter is set to ``fr``."""
+    french_wordlist = wordlist(language="fr")
+
+    words = diceware(language="fr")
+    for word in words:
+        assert word in french_wordlist.values()
+
+
 def test_diceware_language_german():
     """The ``diceware`` function must use the German wordlist when the language parameter is set to ``de``."""
     german_wordlist = wordlist(language="de")
@@ -38,6 +47,14 @@ def test_diceware_language_german():
     words = diceware(language="de")
     for word in words:
         assert word in german_wordlist.values()
+
+def test_diceware_language_spanish():
+    """The ``diceware`` function must use the Spanish wordlist when the language parameter is set to ``es``."""
+    spanish_wordlist = wordlist(language="es")
+
+    words = diceware(language="es")
+    for word in words:
+        assert word in spanish_wordlist.values()
 
 
 def test_diceware_language_not_string():
