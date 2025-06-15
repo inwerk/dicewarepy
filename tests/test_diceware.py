@@ -48,6 +48,7 @@ def test_diceware_language_german():
     for word in words:
         assert word in german_wordlist.values()
 
+
 def test_diceware_language_spanish():
     """The ``diceware`` function must use the Spanish wordlist when the language parameter is set to ``es``."""
     spanish_wordlist = wordlist(language="es")
