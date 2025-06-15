@@ -9,8 +9,10 @@ DICE: list[str] = ["1", "2", "3", "4", "5", "6"]
 DICE_ROLLS_PER_WORD: int = 5
 
 WORDLISTS: dict[str, str] = {
-    "en": "eff_large_wordlist.txt",
     "de": "de-7776-v1-diceware.txt",
+    "en": "eff_large_wordlist.txt",
+    "es": "DW-es-bonito.txt",
+    "fr": "diceware-fr-alt.txt",
 }
 
 SUPPORTED_LANGUAGES: list[str] = list(WORDLISTS.keys())
@@ -45,11 +47,9 @@ def dice(n: int = 1) -> str:
 def wordlist(language: str = "en") -> dict[str, str]:
     """
     Read text files containing a Diceware word list and return a dictionary of those words.\n
-    Currently supported languages: ``en`` and ``de``.\n
-    ``en``: https://www.eff.org/document/passphrase-wordlists\n
-    ``de``: https://github.com/dys2p/wordlists-de
+    Currently supported languages: ``de``, ``en``, ``es`` and ``fr``.
 
-    :param language: the language assigned to a specific inbuilt word list.
+    :param language: the language tag assigned to a specific inbuilt word list.
     :returns: a Diceware wordlist as dictionary.
     :raises ValueError: if the specified language is not supported.
     :raises TypeError: if ``language`` is not a string.
@@ -98,7 +98,7 @@ def diceware(n: int = 6, language: str = "en") -> list[str]:
     A minimum of 6 words is recommended for passphrases.
 
     :param n: the desired number of words to generate. Must be greater than or equal to 1.
-    :param language: the language assigned to a specific inbuilt word list. Currently supported languages: ``en`` and ``de``.
+    :param language: the language tag assigned to a specific inbuilt word list. Currently supported languages: ``de``, ``en``, ``es`` and ``fr``.
     :returns: a list of ``n`` randomly selected words from a Diceware word list.
     :raises TypeError: if ``n`` is not an integer or if ``language`` is not a string.
     :raises ValueError: if ``n`` is less than 1 or if the specified language is not supported.
