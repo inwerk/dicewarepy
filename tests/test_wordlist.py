@@ -30,9 +30,7 @@ def test_wordlist_length(language):
 def test_wordlist_keys(language):
     """The wordlist must contain all keys from 11111 to 66666 in insertion order, each 5 digits long and only digits 1-6."""
     wordlist_dict = wordlist(language=language)
-    expected_keys = [
-        "".join(p) for p in itertools.product("123456", repeat=5)
-    ]
+    expected_keys = ["".join(p) for p in itertools.product("123456", repeat=5)]
     actual_keys = list(wordlist_dict.keys())
     assert actual_keys == expected_keys
 
