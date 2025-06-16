@@ -1,3 +1,4 @@
+import itertools
 import pytest
 
 from dicewarepy.diceware import wordlist
@@ -10,16 +11,30 @@ def clear_wordlist_cache():
     wordlist.cache_clear()
 
 
-def test_wordlist():
+@pytest.mark.parametrize("language", ["en", "fr", "de", "es"])
+def test_wordlist(language):
     """The ``wordlist`` function must return a dictionary and its entries must be strings."""
-    assert isinstance(wordlist(), dict)
-    for entry in wordlist():
+    wordlist_dict = wordlist(language)
+    assert isinstance(wordlist_dict, dict)
+    for entry in wordlist_dict:
         assert isinstance(entry, str)
 
 
-def test_wordlist_length():
-    """The length of the wordlist must be 7776 entries."""
-    assert len(wordlist(language="en")) == 7776
+@pytest.mark.parametrize("language", ["en", "fr", "de", "es"])
+def test_wordlist_length(language):
+    """The wordlist must contain 7776 entries."""
+    assert len(wordlist(language=language)) == 7776
+
+
+@pytest.mark.parametrize("language", ["en", "fr", "de", "es"])
+def test_wordlist_keys(language):
+    """The wordlist must contain all keys from 11111 to 66666 in insertion order, each 5 digits long and only digits 1-6."""
+    wordlist_dict = wordlist(language=language)
+    expected_keys = [
+        "".join(p) for p in itertools.product("123456", repeat=5)
+    ]
+    actual_keys = list(wordlist_dict.keys())
+    assert actual_keys == expected_keys
 
 
 def test_wordlist_language_english():
@@ -27,19 +42,9 @@ def test_wordlist_language_english():
     assert wordlist(language="en")["53434"] == "security"
 
 
-def test_wordlist_language_english_length():
-    """The length of the English wordlist must be 7776 entries."""
-    assert len(wordlist(language="en")) == 7776
-
-
 def test_wordlist_language_french():
     """The French wordlist must return the correct word for a given key."""
     assert wordlist(language="fr")["24363"] == "cube"
-
-
-def test_wordlist_language_french_length():
-    """The length of the French wordlist must be 7776 entries."""
-    assert len(wordlist(language="fr")) == 7776
 
 
 def test_wordlist_language_german():
@@ -47,19 +52,9 @@ def test_wordlist_language_german():
     assert wordlist(language="de")["16622"] == "bombensicher"
 
 
-def test_wordlist_language_german_length():
-    """The length of the German wordlist must be 7776 entries."""
-    assert len(wordlist(language="de")) == 7776
-
-
 def test_wordlist_language_spanish():
     """The Spanish wordlist must return the correct word for a given key."""
     assert wordlist(language="es")["62354"] == "seguridad"
-
-
-def test_wordlist_language_spanish_length():
-    """The length of the Spanish wordlist must be 7776 entries."""
-    assert len(wordlist(language="es")) == 7776
 
 
 def test_wordlist_language_default():
