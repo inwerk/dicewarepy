@@ -22,6 +22,6 @@ def test_german_wordlist_integrity():
 
 
 def test_spanish_wordlist_integrity():
-    """The MD5 checksum for the Spanish wordlist must equal to ``56d95324fa2f75da7d9f838d06f2a681``."""
+    """The MD5 checksum for the Spanish wordlist must equal to ``80905d54a881313886f415506beade02``."""
     wordlist_path = Path("src/dicewarepy/wordlists/DW-es-bonito.txt")
-    assert md5sum(wordlist_path) == "56d95324fa2f75da7d9f838d06f2a681"
+    assert md5sum(wordlist_path) == "80905d54a881313886f415506beade02"
