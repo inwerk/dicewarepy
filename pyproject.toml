@@ -1,7 +1,7 @@
 [project]
 name = "dicewarepy"
-version = "1.1.1"
-description = " Minimalist Python library for Diceware-based word selection from cryptographic wordlists."
+version = "1.1.2"
+description = "Minimalist Python library implementing the Diceware method for generating secure passphrases from cryptographic wordlists."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
