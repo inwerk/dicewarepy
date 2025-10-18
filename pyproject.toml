@@ -36,4 +36,5 @@ include = ["dicewarepy", "dicewarepy.wordlists"]
 
 [tool.pytest.ini_options]
 addopts = "--cov=dicewarepy  --no-cov-on-fail --cov-report term-missing"
+pythonpath = ["src"]
 testpaths = ["tests"]
