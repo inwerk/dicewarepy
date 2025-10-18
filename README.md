@@ -35,23 +35,22 @@ _dicewarepy_ provides a compact simulation of the steps described above.
 
 ## Installation
 
-This library requires Python 3.11 or newer.
+> [!NOTE]
+> To use this package Python 3.11 or higher is required.
 
-**Preferred method (using [uv](https://docs.astral.sh/uv/))**
+The preferred installation method is to add the library to your project using [uv](https://docs.astral.sh/uv/)).
 
 ```shell
 uv add dicewarepy
 ```
 
-**Alternative methods**
-
-With `pip`:
+Alternatively, you can install the package via `pip`:
 
 ```shell
 pip install dicewarepy
 ```
 
-Or if you have multiple Python / pip versions installed, use `pip3`:
+Or if you have multiple Python/pip versions installed, use `pip3` instead:
 
 ```shell
 pip3 install dicewarepy
