@@ -28,8 +28,13 @@ classifiers = [
 "Repository" = "https://github.com/inwerk/dicewarepy"
 "Bug Tracker" = "https://github.com/inwerk/dicewarepy/issues"
 
-[project.optional-dependencies]
-dev = ["pytest", "pytest-cov", "ruff", "ty"]
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.1",
+    "ty>=0.0.1a23",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

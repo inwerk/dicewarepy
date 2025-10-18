@@ -168,10 +168,10 @@ git clone https://github.com/inwerk/dicewarepy.git
 cd dicewarepy
 ```
 
-2. Install the required development dependencies:
+2. Install the required dependencies:
 
 ```shell
-uv sync --extra dev
+uv sync
 ```
 
 ### Tools
