@@ -20,4 +20,4 @@ Include the following information:
 - Any other relevant details.
 - Optionally: a proposed fix or patch.
 
-Do not disclose the vulnerability publicly until we have addressed it. We will respond within 48 hours.
+Do not disclose the vulnerability publicly until I have addressed it. I will respond within 48 hours.

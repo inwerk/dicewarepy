@@ -1,6 +1,6 @@
 # dicewarepy
 
-_dicewarepy_ is a minimalist Python library for Diceware-based word selection from cryptographic wordlists.
+_dicewarepy_ is a minimalist Python library implementing the Diceware method for generating secure passphrases from cryptographic wordlists.
 
 - [About](#about)
 - [Installation](#installation)
@@ -34,6 +34,18 @@ The process for creating a Diceware passphrase can be broken down into the follo
 _dicewarepy_ provides a compact simulation of the steps described above.
 
 ## Installation
+
+This library requires Python 3.11 or newer.
+
+**Preferred method (using [uv](https://docs.astral.sh/uv/))**
+
+```shell
+uv add dicewarepy
+```
+
+**Alternative methods**
+
+With `pip`:
 
 ```shell
 pip install dicewarepy
@@ -165,22 +177,23 @@ uv sync --extra dev
 ### Tools
 This project uses the following development tools:
 
-Code formatting with [ruff](https://github.com/astral-sh/ruff)...
+Linting and code formatting with [ruff](https://github.com/astral-sh/ruff)...
 
 ```shell
-uv run -- ruff format
+uv run ruff check
+uv run ruff format
 ```
 
 Type checking with [ty](https://github.com/astral-sh/ty)...
 
 ```shell
-uv run -- ty check
+uv run ty check
 ```
 
 Testing with [pytest](https://github.com/pytest-dev/pytest)...
 
 ```shell
-uv run -- pytest
+uv run pytest
 ```
 
 ## Credits
