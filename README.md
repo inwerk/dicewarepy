@@ -38,7 +38,7 @@ _dicewarepy_ provides a compact simulation of the steps described above.
 > [!NOTE]
 > To use this package Python 3.11 or higher is required.
 
-The preferred installation method is to add the library to your project using [uv](https://docs.astral.sh/uv/)).
+The preferred installation method is to add the library to your project using [uv](https://docs.astral.sh/uv/).
 
 ```shell
 uv add dicewarepy
