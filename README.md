@@ -35,8 +35,8 @@ _dicewarepy_ provides a compact simulation of the steps described above.
 
 ## Installation
 
-> [!NOTE]
-> To use this package Python 3.11 or higher is required.
+> [!IMPORTANT]
+> Python 3.11 or higher is required.
 
 The preferred installation method is to add the package to your project using [uv](https://docs.astral.sh/uv/).
 
@@ -121,7 +121,8 @@ Output: `dainty swimmable thimble stuffing armrest little`
 
 ## Security
 
-For information on supported versions and how to report vulnerabilities, please refer to the [Security Policy](https://github.com/inwerk/dicewarepy/blob/main/SECURITY.md).
+> [!NOTE]
+> For information on supported versions and how to report vulnerabilities, please refer to the [Security Policy](https://github.com/inwerk/dicewarepy/blob/main/SECURITY.md).
 
 This section provides further details on the security aspects of the Diceware method and the implementation of this package.
 
