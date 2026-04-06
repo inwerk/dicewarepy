@@ -54,6 +54,8 @@ def wordlist(language: str = "en") -> dict[str, str]:
             f"Parameter language must be a string, but is {type(language)}."
         )
 
+    language = language.lower()
+
     if language not in SUPPORTED_LANGUAGES:
         raise ValueError(
             f"Language {language} not supported. Supported languages: {', '.join(SUPPORTED_LANGUAGES)}."
@@ -107,6 +109,8 @@ def diceware(n: int = 6, language: str = "en") -> list[str]:
         raise TypeError(
             f"Parameter language must be a string, but is {type(language)}."
         )
+
+    language = language.lower()
 
     if language not in SUPPORTED_LANGUAGES:
         raise ValueError(
