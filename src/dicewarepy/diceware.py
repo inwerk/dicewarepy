@@ -1,8 +1,6 @@
 import csv
 import secrets
-
 from functools import lru_cache
-
 from importlib import resources
 
 DICE: list[str] = ["1", "2", "3", "4", "5", "6"]
@@ -34,13 +32,7 @@ def dice(n: int = 1) -> str:
     if n < 1:
         raise ValueError(f"Parameter n must be greater than or equal to 1, but is {n}.")
 
-    dice_results: list[str] = []
-
-    # Roll the dice ``n`` times.
-    for _ in range(n):
-        dice_results.append(secrets.choice(DICE))
-
-    return "".join(dice_results)
+    return "".join(secrets.choice(DICE) for _ in range(n))
 
 
 @lru_cache(maxsize=len(SUPPORTED_LANGUAGES))
