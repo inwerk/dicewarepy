@@ -31,14 +31,11 @@ def test_dice_number_default():
     assert len(dice_results) == 1
 
 
-def test_dice_number_not_integer():
+@pytest.mark.parametrize("invalid_number", [1.5, "one", None])
+def test_dice_number_not_integer(invalid_number: object):
     """The ``dice`` function must raise a ``TypeError`` when the number of dice is not an integer."""
     with pytest.raises(TypeError):
-        dice(n=1.5)  # type: ignore
-    with pytest.raises(TypeError):
-        dice(n="one")  # type: ignore
-    with pytest.raises(TypeError):
-        dice(n=None)  # type: ignore
+        dice(n=invalid_number)  # type: ignore
 
 
 def test_dice_number_less_than_one():

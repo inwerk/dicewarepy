@@ -1,9 +1,9 @@
 import itertools
+from unittest.mock import patch
+
 import pytest
 
 from dicewarepy.diceware import wordlist
-
-from unittest.mock import patch
 
 
 @pytest.fixture(autouse=True)
@@ -35,39 +35,36 @@ def test_wordlist_keys(language):
     assert actual_keys == expected_keys
 
 
-def test_wordlist_language_english():
-    """The English wordlist must return the correct word for a given key."""
-    assert wordlist(language="en")["53434"] == "security"
-
-
-def test_wordlist_language_french():
-    """The French wordlist must return the correct word for a given key."""
-    assert wordlist(language="fr")["24363"] == "cube"
-
-
-def test_wordlist_language_german():
-    """The German wordlist must return the correct word for a given key."""
-    assert wordlist(language="de")["16622"] == "bombensicher"
-
-
-def test_wordlist_language_spanish():
-    """The Spanish wordlist must return the correct word for a given key."""
-    assert wordlist(language="es")["62354"] == "seguridad"
+@pytest.mark.parametrize(
+    "language, key, expected_word",
+    [
+        ("en", "53434", "security"),
+        ("fr", "24363", "cube"),
+        ("de", "16622", "bombensicher"),
+        ("es", "62354", "seguridad"),
+    ],
+)
+def test_wordlist_expected_words(language: str, key: str, expected_word: str):
+    """Each wordlist must return the correct word for a given key."""
+    assert wordlist(language=language)[key] == expected_word
 
 
 def test_wordlist_language_default():
-    """The default wordlist must be English."""
+    """The ``wordlist`` function must use the English wordlist by default."""
     assert wordlist()["53434"] == "security"
 
 
-def test_wordlist_language_not_string():
+@pytest.mark.parametrize("language", ["EN", "En", "eN"])
+def test_wordlist_language_case_insensitive(language: str):
+    """The ``wordlist`` function must treat the language parameter case-insensitively."""
+    assert wordlist(language=language)["53434"] == "security"
+
+
+@pytest.mark.parametrize("invalid_language", [1, 1.5, None])
+def test_wordlist_language_not_string(invalid_language: object):
     """The ``wordlist`` function must raise a TypeError when the language is not a string."""
     with pytest.raises(TypeError):
-        wordlist(language=1)  # type: ignore
-    with pytest.raises(TypeError):
-        wordlist(language=1.5)  # type: ignore
-    with pytest.raises(TypeError):
-        wordlist(language=None)  # type: ignore
+        wordlist(language=invalid_language)
 
 
 def test_wordlist_language_invalid():
@@ -91,3 +88,15 @@ def test_wordlist_runtime_error():
     with patch("dicewarepy.diceware.csv.DictReader", side_effect=OSError):
         with pytest.raises(RuntimeError):
             wordlist()
+
+
+def test_wordlist_cache():
+    """The ``wordlist`` function must cache the word list after the first call."""
+    with patch("importlib.resources.files") as mock_files:
+        # First call to wordlist should read the file and cache it.
+        wordlist(language="en")
+        mock_files.assert_called_once()
+
+        # Second call to wordlist should use the cache and not read the file again.
+        wordlist(language="en")
+        mock_files.assert_called_once()  # still only called once

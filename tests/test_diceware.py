@@ -1,9 +1,9 @@
+from unittest.mock import patch
+
 import pytest
 
 from dicewarepy import diceware
 from dicewarepy.diceware import wordlist
-
-from unittest.mock import patch
 
 
 def test_diceware():
@@ -13,7 +13,17 @@ def test_diceware():
         assert isinstance(word, str)
 
 
-def test_diceware_default_language():
+@pytest.mark.parametrize("language", ["en", "fr", "de", "es"])
+def test_diceware_language(language: str):
+    """The ``diceware`` function must use the correct wordlist when the language parameter is specified."""
+    specified_wordlist = wordlist(language=language)
+
+    words = diceware(language=language)
+    for word in words:
+        assert word in specified_wordlist.values()
+
+
+def test_diceware_language_default():
     """The ``diceware`` function must use the English wordlist by default."""
     english_wordlist = wordlist(language="en")
 
@@ -22,50 +32,21 @@ def test_diceware_default_language():
         assert word in english_wordlist.values()
 
 
-def test_diceware_language_english():
-    """The ``diceware`` function must use the English wordlist when the language parameter is set to ``en``."""
-    english_wordlist = wordlist(language="en")
+@pytest.mark.parametrize("language", ["EN", "En", "eN"])
+def test_diceware_language_case_insensitive(language: str):
+    """The ``diceware`` function must treat the language parameter case-insensitively."""
+    specified_wordlist = wordlist(language=language)
 
-    words = diceware(language="en")
+    words = diceware(language=language)
     for word in words:
-        assert word in english_wordlist.values()
+        assert word in specified_wordlist.values()
 
 
-def test_diceware_language_french():
-    """The ``diceware`` function must use the French wordlist when the language parameter is set to ``fr``."""
-    french_wordlist = wordlist(language="fr")
-
-    words = diceware(language="fr")
-    for word in words:
-        assert word in french_wordlist.values()
-
-
-def test_diceware_language_german():
-    """The ``diceware`` function must use the German wordlist when the language parameter is set to ``de``."""
-    german_wordlist = wordlist(language="de")
-
-    words = diceware(language="de")
-    for word in words:
-        assert word in german_wordlist.values()
-
-
-def test_diceware_language_spanish():
-    """The ``diceware`` function must use the Spanish wordlist when the language parameter is set to ``es``."""
-    spanish_wordlist = wordlist(language="es")
-
-    words = diceware(language="es")
-    for word in words:
-        assert word in spanish_wordlist.values()
-
-
-def test_diceware_language_not_string():
+@pytest.mark.parametrize("invalid_language", [1, 1.5, None])
+def test_diceware_language_not_string(invalid_language: object):
     """The ``diceware`` function must raise a ``TypeError`` when the language parameter is not a string."""
     with pytest.raises(TypeError):
-        diceware(language=1)  # type: ignore
-    with pytest.raises(TypeError):
-        diceware(language=1.5)  # type: ignore
-    with pytest.raises(TypeError):
-        diceware(language=None)  # type: ignore
+        diceware(language=invalid_language)  # type: ignore
 
 
 def test_diceware_language_invalid():
@@ -87,14 +68,11 @@ def test_diceware_length_default():
     assert len(words) == 6
 
 
-def test_diceware_number_not_integer():
+@pytest.mark.parametrize("invalid_number", [1.5, "one", None])
+def test_diceware_number_not_integer(invalid_number: object):
     """The ``diceware`` function must raise a ``TypeError`` when the specified number of words is not an integer."""
     with pytest.raises(TypeError):
-        diceware(n=1.5)  # type: ignore
-    with pytest.raises(TypeError):
-        diceware(n="one")  # type: ignore
-    with pytest.raises(TypeError):
-        diceware(n=None)  # type: ignore
+        diceware(n=invalid_number)  # type: ignore
 
 
 def test_diceware_length_less_than_one():
