@@ -85,9 +85,11 @@ def test_wordlist_file_not_found():
 
 def test_wordlist_runtime_error():
     """The ``wordlist`` function must raise a RuntimeError if an error occurs while reading the word list file."""
-    with patch("dicewarepy.diceware.csv.DictReader", side_effect=OSError):
-        with pytest.raises(RuntimeError):
-            wordlist()
+    with (
+        patch("dicewarepy.diceware.csv.DictReader", side_effect=OSError),
+        pytest.raises(RuntimeError),
+    ):
+        wordlist()
 
 
 def test_wordlist_cache():

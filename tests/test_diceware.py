@@ -85,13 +85,17 @@ def test_diceware_length_less_than_one():
 
 def test_diceware_file_not_found():
     """The ``diceware`` function must raise a ``RuntimeError`` when the word list file does not exist."""
-    with patch("dicewarepy.diceware.wordlist", side_effect=FileNotFoundError):
-        with pytest.raises(RuntimeError):
-            diceware()
+    with (
+        patch("dicewarepy.diceware.wordlist", side_effect=FileNotFoundError),
+        pytest.raises(RuntimeError),
+    ):
+        diceware()
 
 
 def test_diceware_runtime_error():
     """The ``diceware`` function must raise a ``RuntimeError`` when an error occurs while reading the word list file."""
-    with patch("dicewarepy.diceware.wordlist", side_effect=RuntimeError):
-        with pytest.raises(RuntimeError):
-            diceware()
+    with (
+        patch("dicewarepy.diceware.wordlist", side_effect=RuntimeError),
+        pytest.raises(RuntimeError),
+    ):
+        diceware()
